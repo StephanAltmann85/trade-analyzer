@@ -26,10 +26,15 @@ class RequestService implements RequestServiceInterface {
     }
 
     private function transform(string $className, string $response) {
+
         //TODO: decode
+        //TODO: implement handler based on endpoint
+
+        $test = new $className($response, 'HitBTC');
         //iterate -> fill arraycolum with dto
 
-        die(var_dump($response));
+
+        die(var_dump($test));
 
     }
 }
