@@ -26,20 +26,20 @@ class RequestServiceSelector {
     }
 
     /**
-     * @param $name
+     * @param $exchange
      * @return RequestServiceInterface
      * @throws \Exception
      */
-    public function get($name) {
+    public function get($exchange) {
         try {
 
-            $service = $this->container->get('App\\Services\\' . $name . '\\RequestService');
+            $service = $this->container->get('App\\Services\\' . $exchange . '\\RequestService');
             return $service;
 
         } catch (\Exception $e) {
 
             if(!isset($service)) {
-                throw new \Exception('Request Handler for Service ' . $name . ' is not defined!');
+                throw new \Exception('Request Handler for Service ' . $exchange . ' is not defined!');
             }
         }
     }

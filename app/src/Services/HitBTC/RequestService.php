@@ -22,7 +22,7 @@ class RequestService implements RequestServiceInterface {
     /**
      * @var string
      */
-    private $service;
+    private $exchange;
 
     /**
      * @var ContainerInterface
@@ -32,16 +32,16 @@ class RequestService implements RequestServiceInterface {
     /**
      * RequestService constructor.
      * @param ConnectionServiceInterface $connectionService
-     * @param string $service
+     * @param string $exchange
      * @param ContainerInterface $container
      *
      * Container has been added for accessing transformers dynamically
      */
     public function __construct(ConnectionServiceInterface $connectionService,
-                                string $service,
+                                string $exchange,
                                 ContainerInterface $container) {
         $this->connectionService = $connectionService;
-        $this->service = $service;
+        $this->exchange = $exchange;
         $this->container = $container;
     }
 

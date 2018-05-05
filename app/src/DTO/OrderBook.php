@@ -33,16 +33,16 @@ class OrderBook extends AbstractDTO {
     /**
      * @var string
      */
-    public $service;
+    public $exchange;
 
     /**
      * OrderBook constructor.
      * @param string $element
-     * @param string $service
+     * @param string $exchange
      */
-    public function __construct(array $element, string $service) {
-        $this->service = $service;
-        $this->{'assignValues' . $service}($element);
+    public function __construct(array $element, string $exchange) {
+        $this->exchange = $exchange;
+        $this->{'assignValues' . $exchange}($element);
     }
 
     /**

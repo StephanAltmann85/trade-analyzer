@@ -30,7 +30,7 @@ services:
     App\Services\HitBTC\RequestService:
         arguments:
             $connectionService: '@App\Services\HitBTC\ConnectionService'
-            $service: 'HitBTC'
+            $exchange: 'HitBTC'
         public: true
 
     App\Services\HitBTC\ConnectionService:

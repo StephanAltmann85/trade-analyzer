@@ -56,7 +56,9 @@ class Test extends Command
 
         $this->requestService = $this->requestServiceSelector->get('HitBTC');
 
-        $this->requestService->getOrderBook('ATMBTC');
+        $test = $this->requestService->getOrderBook('ATMBTC');
+
+        die(var_dump($test));
 
         //Todo: store to database
     }
