@@ -6,7 +6,8 @@ use App\DTO\OrderBook;
 use App\Services\ConnectionServiceInterface;
 use App\Services\RequestServiceInterface;
 use App\DTO\AbstractDTO;
-use Unirest\Response;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class RequestService
@@ -24,45 +25,41 @@ class RequestService implements RequestServiceInterface {
     private $service;
 
     /**
+     * @var ContainerInterface
+     */
+    private $container;
+
+    /**
      * RequestService constructor.
      * @param ConnectionServiceInterface $connectionService
      * @param string $service
+     * @param ContainerInterface $container
+     *
+     * Container has been added for accessing transformers dynamically
      */
-    public function __construct(ConnectionServiceInterface $connectionService, string $service) {
+    public function __construct(ConnectionServiceInterface $connectionService,
+                                string $service,
+                                ContainerInterface $container) {
         $this->connectionService = $connectionService;
         $this->service = $service;
+        $this->container = $container;
     }
-
-    //Todo: return array column of dto
 
     /**
      * @param string $symbol
+     *
+     * @return ArrayCollection
      */
     public function getOrderBook(string $symbol) {
 
         $params = array(
             'endpoint' => 'orderbook',
             'symbol' => $symbol,
-            'data' => array()
+            'query' => array('limit' => 20)
         );
 
         $response = $this->connectionService->get($params);
-        return $this->transform(OrderBook::class, $response);
-    }
-
-    /**
-     * @param string $className
-     * @param Response $response
-     */
-    private function transform(string $className, Response $response) {
-
-        //TODO: implement handler based on endpoint
-
-        //$test = new $className($response, $this->service);
-        //iterate -> fill arraycolum with dto
-
-
-        die(var_dump($response));
-
+        return $this->container->get('App\Services\HitBTC\Transformer\OrderBook')
+                ->transform(OrderBook::class, $response);
     }
 }

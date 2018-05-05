@@ -36,3 +36,6 @@ services:
     App\Services\HitBTC\ConnectionService:
         arguments:
             $serviceBaseUrl: 'https://api.hitbtc.com/api/2/public/'
+
+    App\Services\HitBTC\Transformer\OrderBook:
+        public: true

@@ -20,28 +20,28 @@ class OrderBook extends AbstractDTO {
     /**
      * @var float
      */
-    public $value;
+    public $price;
 
     /**
      * @var float
      */
     public $quantity;
 
-    //TODO: define response type
-
     /**
      * OrderBook constructor.
-     * @param string $response
+     * @param string $element
      * @param string $service
      */
-    public function __construct(string $response, string $service) {
-        $this->{'assignValues' . $service}($response);
+    public function __construct(array $element, string $service) {
+        $this->{'assignValues' . $service}($element);
     }
 
     /**
-     * @param string $response
+     * @param string $element
      */
-    private function assignValuesHitBTC(string $response) {
-
+    private function assignValuesHitBTC(array $element) {
+        $this->type = $element["type"];
+        $this->price = $element["price"];
+        $this->quantity = $element["size"];
     }
 }

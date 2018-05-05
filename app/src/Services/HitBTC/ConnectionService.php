@@ -30,11 +30,11 @@ class ConnectionService implements ConnectionServiceInterface {
      */
     public function get(array $params) {
         $url = $this->serviceBaseUrl . $params['endpoint'] . '/' . $params['symbol'];
-        $data = $params['data'];
+        $query = $params['query'];
 
         $headers = array('Accept' => 'application/json');
-        $body = Unirest\Request\Body::form($data);
+        Unirest\Request::jsonOpts(true);
 
-        return Unirest\Request::get($url, $headers, $body);
+        return Unirest\Request::get($url, $headers, $query)->body;
     }
 }
