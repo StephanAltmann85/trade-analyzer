@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class Main
+class Main extends Controller
 {
     /**
     * @Route("/", name="home")
@@ -13,8 +14,9 @@ class Main
     public function home()
     {
 
-        return new Response(
-            '<html><body>hello</body></html>'
+        return $this->render(
+            'main/home.html.twig',
+            array()
         );
     }
 }

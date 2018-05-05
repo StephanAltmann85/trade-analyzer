@@ -10,8 +10,8 @@ class ConnectionService implements ConnectionServiceInterface {
 
     }
 
-    public function connect() {
-        echo 'hallo';
+    public function get(array $params) {
+        return 'test';
     }
 
 
