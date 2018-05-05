@@ -28,4 +28,11 @@ services:
     # please note that last definitions always *replace* previous ones
 
     App\Services\HitBTC\RequestService:
+        arguments:
+            $connectionService: '@App\Services\HitBTC\ConnectionService'
+            $service: 'HitBTC'
         public: true
+
+    App\Services\HitBTC\ConnectionService:
+        arguments:
+            $serviceBaseUrl: 'https://api.hitbtc.com/api/2/public/'
