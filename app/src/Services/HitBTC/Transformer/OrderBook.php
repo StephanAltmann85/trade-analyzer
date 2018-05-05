@@ -10,8 +10,10 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @package App\Services\HitBTC\Transformer
  */
 class OrderBook implements TransformerInterface {
-    
+
     /**
+     * Trasforms response into array collection of entities
+     *
      * @param string $className
      * @param array $response
      * @return ArrayCollection
