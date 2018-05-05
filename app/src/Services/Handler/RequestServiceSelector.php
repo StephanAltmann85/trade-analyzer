@@ -5,6 +5,10 @@ namespace App\Services\Handler;
 use App\Services\RequestServiceInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * Class RequestServiceSelector
+ * @package App\Services\Handler
+ */
 class RequestServiceSelector {
 
     /**

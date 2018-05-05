@@ -8,17 +8,36 @@ use App\Services\RequestServiceInterface;
 use App\DTO\AbstractDTO;
 use Unirest\Response;
 
+/**
+ * Class RequestService
+ * @package App\Services\HitBTC
+ */
 class RequestService implements RequestServiceInterface {
 
+    /**
+     * @var ConnectionServiceInterface
+     */
     private $connectionService;
+    /**
+     * @var string
+     */
     private $service;
 
+    /**
+     * RequestService constructor.
+     * @param ConnectionServiceInterface $connectionService
+     * @param string $service
+     */
     public function __construct(ConnectionServiceInterface $connectionService, string $service) {
         $this->connectionService = $connectionService;
         $this->service = $service;
     }
 
     //Todo: return array column of dto
+
+    /**
+     * @param string $symbol
+     */
     public function getOrderBook(string $symbol) {
 
         $params = array(
@@ -31,6 +50,10 @@ class RequestService implements RequestServiceInterface {
         return $this->transform(OrderBook::class, $response);
     }
 
+    /**
+     * @param string $className
+     * @param Response $response
+     */
     private function transform(string $className, Response $response) {
 
         //TODO: implement handler based on endpoint
