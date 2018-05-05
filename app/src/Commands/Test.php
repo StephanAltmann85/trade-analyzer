@@ -51,11 +51,6 @@ class Test extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        //TODO: get data
-            //rest service
-            //data service -> calling rest service
-        //TODO: put into dto / array column
-
         //TODO: output
 
 
