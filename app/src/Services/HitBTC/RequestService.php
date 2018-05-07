@@ -13,6 +13,12 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class RequestService extends BaseRequestService implements RequestServiceInterface {
 
+    //TODO: add test
+    //extend baseRequestService in Tests
+    //extend BaseConnectionService in Test
+    //use service selector
+    //return string response -> check if given
+
     /**
      * @param string $symbol
      * @return ArrayCollection
