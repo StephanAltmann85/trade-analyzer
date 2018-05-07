@@ -30,6 +30,11 @@ class RequestService extends BaseRequestService implements RequestServiceInterfa
         );
 
         $response = $this->connectionService->get($params);
+
+        if($response === NULL) {
+            throw new \Exception('Empty response');
+        }
+
         return $this->container->get('App\Services\HitBTC\Transformer\OrderBook')
                 ->transform(OrderBook::class, $response);
     }
