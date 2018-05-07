@@ -3,6 +3,7 @@
 namespace App\Services\HitBTC;
 
 use App\DTO\OrderBook;
+use App\Services\BaseRequestService;
 use App\Services\ConnectionServiceInterface;
 use App\Services\RequestServiceInterface;
 use App\DTO\AbstractDTO;
@@ -13,37 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Class RequestService
  * @package App\Services\HitBTC
  */
-class RequestService implements RequestServiceInterface {
-
-    /**
-     * @var ConnectionServiceInterface
-     */
-    private $connectionService;
-    /**
-     * @var string
-     */
-    private $exchange;
-
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-
-    /**
-     * RequestService constructor.
-     * @param ConnectionServiceInterface $connectionService
-     * @param string $exchange
-     * @param ContainerInterface $container
-     *
-     * Container has been added for accessing transformers dynamically
-     */
-    public function __construct(ConnectionServiceInterface $connectionService,
-                                string $exchange,
-                                ContainerInterface $container) {
-        $this->connectionService = $connectionService;
-        $this->exchange = $exchange;
-        $this->container = $container;
-    }
+class RequestService extends BaseRequestService implements RequestServiceInterface {
 
     /**
      * @param string $symbol
@@ -51,7 +22,7 @@ class RequestService implements RequestServiceInterface {
      * @return ArrayCollection
      */
     public function getOrderBook(string $symbol) {
-
+        
         $params = array(
             'endpoint' => 'orderbook',
             'symbol' => $symbol,

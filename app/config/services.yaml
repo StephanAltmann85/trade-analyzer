@@ -27,11 +27,17 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
+    App\Services\BaseRequestService:
+        abstract: true
+
     App\Services\HitBTC\RequestService:
-        arguments:
-            $connectionService: '@App\Services\HitBTC\ConnectionService'
-            $exchange: 'HitBTC'
+        parent: App\Services\BaseRequestService
+        calls:
+            - [ configure, [ '@App\Services\HitBTC\ConnectionService', 'HitBTC', '@service_container' ] ]
         public: true
+        autowire: true
+        autoconfigure: false
+
 
     App\Services\HitBTC\ConnectionService:
         arguments:
