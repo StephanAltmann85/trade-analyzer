@@ -4,18 +4,15 @@ namespace App\Services\HitBTC;
 
 use App\DTO\OrderBook;
 use App\Services\BaseRequestService;
-use App\Services\ConnectionServiceInterface;
 use App\Services\RequestServiceInterface;
-use App\DTO\AbstractDTO;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class RequestService
  * @package App\Services\HitBTC
  */
 class RequestService extends BaseRequestService implements RequestServiceInterface {
-    
+
     /**
      * @param string $symbol
      * @return ArrayCollection
