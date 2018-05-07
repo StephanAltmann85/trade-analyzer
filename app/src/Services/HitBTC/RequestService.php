@@ -22,7 +22,7 @@ class RequestService extends BaseRequestService implements RequestServiceInterfa
      * @return ArrayCollection
      */
     public function getOrderBook(string $symbol) {
-        
+
         $params = array(
             'endpoint' => 'orderbook',
             'symbol' => $symbol,

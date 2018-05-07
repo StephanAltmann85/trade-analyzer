@@ -32,14 +32,22 @@ services:
 
     App\Services\HitBTC\RequestService:
         parent: App\Services\BaseRequestService
-        calls:
-            - [ configure, [ '@App\Services\HitBTC\ConnectionService', 'HitBTC', '@service_container' ] ]
+        arguments:
+            $connectionService: '@App\Services\HitBTC\ConnectionService'
+            $exchange: 'HitBTC'
+            $container: '@service_container'
         public: true
         autowire: true
         autoconfigure: false
 
+    App\Services\BaseConnectionService:
+        abstract: true
 
     App\Services\HitBTC\ConnectionService:
+        parent: App\Services\BaseConnectionService
+        autowire: true
+        autoconfigure: false
+        public: true
         arguments:
             $serviceBaseUrl: 'https://api.hitbtc.com/api/2/public/'
 

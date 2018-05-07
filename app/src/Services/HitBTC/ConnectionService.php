@@ -4,25 +4,13 @@ namespace App\Services\HitBTC;
 
 use App\Services\ConnectionServiceInterface;
 use Unirest;
+use App\Services\BaseConnectionService;
 
 /**
  * Class ConnectionService
  * @package App\Services\HitBTC
  */
-class ConnectionService implements ConnectionServiceInterface {
-
-    /**
-     * @var string
-     */
-    public $serviceBaseUrl;
-
-    /**
-     * ConnectionService constructor.
-     * @param string $serviceBaseUrl
-     */
-    public function __construct(string $serviceBaseUrl) {
-        $this->serviceBaseUrl = $serviceBaseUrl;
-    }
+class ConnectionService extends BaseConnectionService implements ConnectionServiceInterface {
 
     /**
      * @param array $params
