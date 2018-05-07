@@ -15,11 +15,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @package App\Services\HitBTC
  */
 class RequestService extends BaseRequestService implements RequestServiceInterface {
-
+    
     /**
      * @param string $symbol
-     *
      * @return ArrayCollection
+     * @throws \Exception
      */
     public function getOrderBook(string $symbol) {
 
