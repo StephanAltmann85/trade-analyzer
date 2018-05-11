@@ -12,17 +12,17 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class RequestServiceSelector {
 
     /**
-     * @var ContainerInterface
+     * @var array
      */
-    private $container;
+    private $requestServices;
 
     /**
      * RequestServiceSelector constructor.
-     * @param ContainerInterface $container
+     * @param array $requestServices
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(array $requestServices)
     {
-        $this->container = $container;
+        $this->requestServices = $requestServices;
     }
 
     /**
@@ -31,9 +31,10 @@ class RequestServiceSelector {
      * @throws \Exception
      */
     public function get($exchange) {
+
         try {
 
-            $service = $this->container->get('App\\Services\\' . $exchange . '\\RequestService');
+            $service = $this->requestServices[$exchange];
             return $service;
 
         } catch (\Exception $e) {

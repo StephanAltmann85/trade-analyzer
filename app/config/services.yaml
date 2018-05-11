@@ -56,3 +56,8 @@ services:
 
     App\Services\HitBTC\Transformer\OrderBook:
         public: true
+
+    App\Services\Handler\RequestServiceSelector:
+        arguments:
+            $requestServices:
+                HitBTC: '@App\Services\HitBTC\RequestService'
