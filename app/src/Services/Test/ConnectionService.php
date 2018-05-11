@@ -8,7 +8,7 @@ use App\Services\BaseConnectionService;
 
 /**
  * Class ConnectionService
- * @package App\Services\HitBTC
+ * @package App\Services\Test
  */
 class ConnectionService extends BaseConnectionService implements ConnectionServiceInterface {
 

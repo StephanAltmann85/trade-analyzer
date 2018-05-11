@@ -9,11 +9,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class RequestService
- * @package App\Services\HitBTC
+ * @package App\Services\Test
  */
 class RequestService extends BaseRequestService implements RequestServiceInterface {
 
     //TODO: add test
+    //TODO: inject transformer
     //register services
     //check transformed response
 
