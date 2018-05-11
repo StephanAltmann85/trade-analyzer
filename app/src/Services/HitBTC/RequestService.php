@@ -6,12 +6,26 @@ use App\DTO\OrderBook;
 use App\Services\BaseRequestService;
 use App\Services\RequestServiceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Services\TransformerInterface;
 
 /**
  * Class RequestService
  * @package App\Services\HitBTC
  */
 class RequestService extends BaseRequestService implements RequestServiceInterface {
+
+    /**
+     * @var TransformerInterface
+     */
+    public $orderBookTransformer;
+
+
+    /**
+     * @param TransformerInterface $orderBookTransformer
+     */
+    public function setOrderBookTransformer(TransformerInterface $orderBookTransformer) {
+        $this->orderBookTransformer = $orderBookTransformer;
+    }
 
     //TODO: add test
     //extend baseRequestService in Tests
@@ -38,7 +52,7 @@ class RequestService extends BaseRequestService implements RequestServiceInterfa
             throw new \Exception('Empty response');
         }
 
-        return $this->container->get('App\Services\HitBTC\Transformer\OrderBook')
+        return $this->orderBookTransformer
                 ->transform(OrderBook::class, $response);
     }
 }

@@ -35,7 +35,10 @@ services:
         arguments:
             $connectionService: '@App\Services\HitBTC\ConnectionService'
             $exchange: 'HitBTC'
-            $container: '@service_container'
+        calls:
+            - method: setOrderBookTransformer
+              arguments:
+                  - '@App\Services\HitBTC\Transformer\OrderBook'
         public: true
         autowire: true
         autoconfigure: false

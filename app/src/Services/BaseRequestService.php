@@ -25,23 +25,15 @@ abstract class BaseRequestService implements RequestServiceInterface {
     public $exchange;
 
     /**
-     * @var ContainerInterface
-     */
-    public $container;
-
-    /**
      * RequestService __construct.
      * @param ConnectionServiceInterface $connectionService
      * @param string $exchange
-     * @param ContainerInterface $container
      *
      * Container has been added for accessing transformers dynamically
      */
     public function __construct(ConnectionServiceInterface $connectionService,
-                                string $exchange,
-                                ContainerInterface $container) {
+                                string $exchange) {
         $this->connectionService = $connectionService;
         $this->exchange = $exchange;
-        $this->container = $container;
     }
 }
