@@ -12,14 +12,18 @@ class Test extends Command
 {
 
     /**
+     * @var RequestServiceSelector
+     */
+    private $requestServiceSelector;
+
+    /**
      * @var RequestServiceInterface
      */
     private $requestService;
 
-    private $requestServiceSelector;
-
     /**
      * Test constructor.
+     * @param RequestServiceSelector $requestServiceSelector
      */
     public function __construct(RequestServiceSelector $requestServiceSelector) {
         parent::__construct();
@@ -47,6 +51,7 @@ class Test extends Command
     {
         //TODO: output
         //TODO: final structure command Exchnage Endpoint
+        //TODO: add exception if method is not availabe
 
 
         $this->requestService = $this->requestServiceSelector->get('HitBTC');

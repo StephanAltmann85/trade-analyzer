@@ -39,7 +39,7 @@ services:
             - method: setOrderBookTransformer
               arguments:
                   - '@App\Services\HitBTC\Transformer\OrderBook'
-        public: true
+        public: false
         autowire: true
         autoconfigure: false
 
@@ -50,12 +50,12 @@ services:
         parent: App\Services\BaseConnectionService
         autowire: true
         autoconfigure: false
-        public: true
+        public: false
         arguments:
             $serviceBaseUrl: 'https://api.hitbtc.com/api/2/public/'
 
     App\Services\HitBTC\Transformer\OrderBook:
-        public: true
+        public: false
 
     App\Services\Handler\RequestServiceSelector:
         arguments:
