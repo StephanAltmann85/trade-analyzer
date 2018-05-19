@@ -19,7 +19,6 @@ class RequestService extends BaseRequestService implements RequestServiceInterfa
      */
     public $orderBookTransformer;
 
-
     /**
      * @param TransformerInterface $orderBookTransformer
      */
