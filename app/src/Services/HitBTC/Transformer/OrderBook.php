@@ -47,7 +47,6 @@ class OrderBook implements TransformerInterface {
     public function assign(array $element, AbstractDTO $target) : void {
         $target->exchange = 'HitBTC';
 
-
         if($element["type"] == "ask") {
             $target->type = 1;
         }
