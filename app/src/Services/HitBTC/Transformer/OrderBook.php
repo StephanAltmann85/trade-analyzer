@@ -2,6 +2,7 @@
 
 namespace App\Services\HitBTC\Transformer;
 
+use App\DTO\AbstractDTO;
 use App\Services\TransformerInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -26,18 +27,36 @@ class OrderBook implements TransformerInterface {
             // type is missing, add to value
             $element['type'] = 'ask';
 
-            $entity = new $className($element, 'HitBTC');
+            $entity = new $className($element, $this);
             $entities->add($entity);
         }
 
         foreach ($response["bid"] as &$element) {
             $element['type'] = 'bid';
 
-            $entity = new $className($element, 'HitBTC');
+            $entity = new $className($element, $this);
             $entities->add($entity);
         }
 
         return $entities;
+    }
+
+    /**
+     * @param array $element
+     */
+    public function assign(array $element, AbstractDTO $target) : void {
+        $target->exchange = 'HitBTC';
+
+
+        if($element["type"] == "ask") {
+            $target->type = 1;
+        }
+        elseif ($element["type"] == "bid") {
+            $target->type = 2;
+        }
+
+        $target->price = $element["price"];
+        $target->quantity = $element["size"];
     }
 
 }

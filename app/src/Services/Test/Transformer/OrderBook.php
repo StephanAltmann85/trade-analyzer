@@ -4,6 +4,7 @@ namespace App\Services\Test\Transformer;
 
 use App\Services\TransformerInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\DTO\AbstractDTO;
 
 /**
  * Class OrderBook
@@ -23,6 +24,14 @@ class OrderBook implements TransformerInterface {
         //TODO: transform something
 
         return $entities;
+    }
+
+    /**
+     * @param array $element
+     * @param AbstractDTO $target
+     */
+    public function assign(array $element, AbstractDTO $target) : void {
+
     }
 
 }

@@ -6,6 +6,9 @@ namespace App\DTO;
  * Class OrderBook
  * @package App\DTO
  */
+
+use App\Services\TransformerInterface;
+
 /**
  * Class OrderBook
  * @package App\DTO
@@ -37,27 +40,10 @@ class OrderBook extends AbstractDTO {
 
     /**
      * OrderBook constructor.
-     * @param string $element
-     * @param string $exchange
+     * @param array $element
+     * @param TransformerInterface $transformer
      */
-    public function __construct(array $element, string $exchange) {
-        $this->exchange = $exchange;
-        $this->{'assignValues' . $exchange}($element);
-    }
-
-    /**
-     * @param string $element
-     */
-    private function assignValuesHitBTC(array $element) {
-
-        if($element["type"] == "ask") {
-            $this->type = 1;
-        }
-        elseif ($element["type"] == "bid") {
-            $this->type = 2;
-        }
-
-        $this->price = $element["price"];
-        $this->quantity = $element["size"];
+    public function __construct(array $element, TransformerInterface $transformer) {
+        $transformer->assign($element, $this);
     }
 }
