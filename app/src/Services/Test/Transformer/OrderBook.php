@@ -22,6 +22,9 @@ class OrderBook implements TransformerInterface {
     public function transform(string $className, array $response) {
 
         //TODO: transform something
+        $entities = new ArrayCollection();
+
+        $entities->add($element);
 
         return $entities;
     }

@@ -13,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class OrderBook implements TransformerInterface {
 
     /**
-     * Trasforms response into array collection of entities
+     * Transforms response into array collection of entities
      *
      * @param string $className
      * @param array $response
