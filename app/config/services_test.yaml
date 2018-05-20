@@ -7,3 +7,8 @@ services:
     # aliases are prefixed with test. For example:
     #
     # test.App\Service\MyService: '@App\Service\MyService'
+
+    App\Services\Handler\RequestServiceSelector:
+        arguments:
+            $requestServices:
+                Test: '@App\Tests\Services\Test\RequestService'
