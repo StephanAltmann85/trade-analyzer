@@ -26,6 +26,9 @@ class ConnectionService extends BaseConnectionService implements ConnectionServi
 
         $response = Unirest\Request::get($url, $headers, $query);
 
+        //TODO: implement wrapper for throwing exception if status code is not 200
+        //TODO: implement logger (url, time, status code) - monolog
+
         if($response->code != 200) {
             throw new \Exception("Requested Service responded with status code $response->code");
             return array();
