@@ -8,6 +8,8 @@ class RequestTest extends KernelTestCase
 {
     private $container;
 
+    private $requestService;
+
     public function __construct() {
         self::bootKernel();
 
@@ -17,25 +19,29 @@ class RequestTest extends KernelTestCase
 
     public function testIfServiceCanBeSelected() {
         $serviceSelector = $this->container->get('App\Services\Handler\RequestServiceSelector');
+        $this->requestService = $serviceSelector->get('Test');
+
         $this->assertInstanceOf('App\Tests\Services\Test\RequestService',
-            $serviceSelector->get('Test'),
+            $this->requestService,
             'RequestService via ServiceSelector not found!'
         );
+    }
 
+    public function testConnection() {
 
     }
 
-    public function testIfThatTestIsRunning2() {
+    public function testRequest() {
 
     }
 
+    public function testAssigningValueFromRequest() {
 
+    }
 
-    //TODO: test connection
-    //TODO: test request
+    public function testTranformationOfRequestValueAssociation() {
 
-    //TODO: test request assign
-    //TODO: test request transform
+    }
 
     //TODO: test dto compatibility
 
