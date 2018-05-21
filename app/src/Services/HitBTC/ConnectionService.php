@@ -14,7 +14,7 @@ class ConnectionService extends BaseConnectionService implements ConnectionServi
 
     /**
      * @param array $params
-     * @return Unirest\Response
+     * @return array
      */
     public function get(array $params) {
         $url = $this->serviceBaseUrl . $params['endpoint'] . '/' . $params['symbol'];

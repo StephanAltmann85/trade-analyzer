@@ -33,6 +33,6 @@ services:
         parent: App\Services\BaseConnectionService
         autowire: true
         autoconfigure: false
-        public: false
+        public: true
         arguments:
             $serviceBaseUrl: 'https://test.com'

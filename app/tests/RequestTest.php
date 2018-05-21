@@ -28,7 +28,11 @@ class RequestTest extends KernelTestCase
     }
 
     public function testConnection() {
+        $connectionService = $this->container->get('App\Tests\Services\Test\ConnectionService');
+        $response = $connectionService->get(array());
 
+        $this->assertArrayHasKey('bid', $response);
+        $this->assertArrayHasKey('ask', $response);
     }
 
     public function testRequest() {

@@ -4,6 +4,8 @@ namespace App\Tests\Services\Test;
 
 use App\Services\ConnectionServiceInterface;
 use Unirest;
+use Unirest\Request;
+use Unirest\Response;
 use App\Services\BaseConnectionService;
 
 /**
@@ -17,6 +19,19 @@ class ConnectionService extends BaseConnectionService implements ConnectionServi
      * @return Unirest\Response
      */
     public function get(array $params) {
-        //TODO: return sample response
+
+        $response = new Response(200, '{
+          "ask": {
+            "price": "0.012285",
+            "size": "6.754"
+          },
+          "bid": {
+            "price": "0.012106",
+            "size": "43.167"
+          },
+          "timestamp": "2018-05-21T18:04:11.946Z"
+        }', '');
+
+        return json_decode($response->raw_body, true);
     }
 }
