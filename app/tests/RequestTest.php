@@ -31,28 +31,33 @@ class RequestTest extends KernelTestCase
         $connectionService = $this->container->get('App\Tests\Services\Test\ConnectionService');
         $response = $connectionService->get(array());
 
-        $this->assertArrayHasKey('bid', $response);
-        $this->assertArrayHasKey('ask', $response);
-    }
-
-    public function testRequest() {
-
-    }
-
-    public function testAssigningValueFromRequest() {
+        $this->assertNotEmpty($response, 'Expecting not empty array as return of ConnectionService->get()');
 
     }
 
     public function testTranformationOfRequestValueAssociation() {
-
+        //expected:
+        //array column containing ask & bid
     }
 
-    //TODO: test dto compatibility
+    public function testAssigningValueFromRequest() {
+        //expected:
+        //type
+        //exchange
+        //price
+        //quantity
+    }
+
+    public function testRequest() {
+        //expected:
+        //array column containing valid entities
+        //->test if array colum
+        //->test if entity is valid
+    }
 
     //TODO: test error handling
-        //wrong service
-        //no response
-        //wrong response statuscode
-        //wrong response structure
-        //
+    //wrong service
+    //no response
+    //wrong response statuscode
+    //wrong response structure
 }

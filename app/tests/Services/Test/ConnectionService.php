@@ -16,9 +16,9 @@ class ConnectionService extends BaseConnectionService implements ConnectionServi
 
     /**
      * @param array $params
-     * @return Unirest\Response
+     * @return array
      */
-    public function get(array $params) {
+    public function get(array $params) : array {
 
         $response = new Response(200, '{
           "ask": {

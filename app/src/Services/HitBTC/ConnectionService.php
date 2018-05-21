@@ -15,14 +15,23 @@ class ConnectionService extends BaseConnectionService implements ConnectionServi
     /**
      * @param array $params
      * @return array
+     * @throws \Exception
      */
-    public function get(array $params) {
+    public function get(array $params) : array {
         $url = $this->serviceBaseUrl . $params['endpoint'] . '/' . $params['symbol'];
         $query = $params['query'];
 
         $headers = array('Accept' => 'application/json');
         Unirest\Request::jsonOpts(true);
 
-        return Unirest\Request::get($url, $headers, $query)->body;
+        $response = Unirest\Request::get($url, $headers, $query);
+
+        if($response->code != 200) {
+            throw new \Exception("Requested Service responded with status code $response->code");
+            return array();
+        }
+        else {
+            return $response->body;
+        }
     }
 }
