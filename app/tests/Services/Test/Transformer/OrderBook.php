@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Test\Transformer;
+namespace App\Tests\Services\Test\Transformer;
 
 use App\Services\TransformerInterface;
 use Doctrine\Common\Collections\ArrayCollection;

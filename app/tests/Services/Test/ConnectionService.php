@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Test;
+namespace App\Tests\Services\Test;
 
 use App\Services\ConnectionServiceInterface;
 use Unirest;

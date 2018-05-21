@@ -2,12 +2,34 @@
 
 namespace App\Tests;
 
-use PHPUnit\Framework\TestCase;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class RequestTest extends TestCase
+class RequestTest extends KernelTestCase
 {
+    private $container;
 
-    //TODO: test request service selector
+    public function __construct() {
+        self::bootKernel();
+
+        // returns the real and unchanged service container
+        $this->container = self::$kernel->getContainer();
+    }
+
+    public function testIfServiceCanBeSelected() {
+        $serviceSelector = $this->container->get('App\Services\Handler\RequestServiceSelector');
+        $this->assertInstanceOf('App\Tests\Services\Test\RequestService',
+            $serviceSelector->get('Test'),
+            'RequestService via ServiceSelector not found!'
+        );
+
+
+    }
+
+    public function testIfThatTestIsRunning2() {
+
+    }
+
+
 
     //TODO: test connection
     //TODO: test request

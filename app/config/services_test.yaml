@@ -12,3 +12,27 @@ services:
         arguments:
             $requestServices:
                 Test: '@App\Tests\Services\Test\RequestService'
+
+    App\Tests\Services\Test\Transformer\OrderBook:
+            public: false
+
+    App\Tests\Services\Test\RequestService:
+        parent: App\Services\BaseRequestService
+        arguments:
+            $connectionService: '@App\Tests\Services\Test\ConnectionService'
+            $exchange: 'Test'
+        calls:
+            - method: setOrderBookTransformer
+              arguments:
+                  - '@App\Tests\Services\Test\Transformer\OrderBook'
+        public: false
+        autowire: true
+        autoconfigure: false
+
+    App\Tests\Services\Test\ConnectionService:
+        parent: App\Services\BaseConnectionService
+        autowire: true
+        autoconfigure: false
+        public: false
+        arguments:
+            $serviceBaseUrl: 'https://test.com'

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Test;
+namespace App\Tests\Services\Test;
 
 use App\DTO\OrderBook;
 use App\Services\BaseRequestService;
@@ -18,9 +18,12 @@ class RequestService extends BaseRequestService implements RequestServiceInterfa
     //register services
     //check transformed response
 
+    public function setOrderBookTransformer() {
+
+    }
+
     /**
      * @param string $symbol
-     * @return ArrayCollection
      * @throws \Exception
      */
     public function getOrderBook(string $symbol) {
