@@ -3,7 +3,6 @@
 namespace App\Services\Handler;
 
 use App\Services\RequestServiceInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class RequestServiceSelector
@@ -30,7 +29,7 @@ class RequestServiceSelector {
      * @return RequestServiceInterface
      * @throws \Exception
      */
-    public function get($exchange) {
+    public function get($exchange) :?RequestServiceInterface {
 
         try {
 
@@ -40,10 +39,10 @@ class RequestServiceSelector {
         } catch (\Exception $e) {
 
             if(!isset($service)) {
-                throw new \Exception('Request Handler for Service ' . $exchange . ' is not defined!');
+                throw new \RuntimeException('Request Handler for Service ' . $exchange . ' is not defined!');
             }
         }
+
+        return null;
     }
-
-
 }

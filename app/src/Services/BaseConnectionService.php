@@ -2,9 +2,6 @@
 
 namespace App\Services;
 
-use App\Services\ConnectionServiceInterface;
-use Unirest;
-
 /**
  * Class ConnectionService
  * @package App\Services\HitBTC

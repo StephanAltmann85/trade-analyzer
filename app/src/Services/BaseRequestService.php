@@ -2,13 +2,6 @@
 
 namespace App\Services;
 
-use App\DTO\OrderBook;
-use App\Services\ConnectionServiceInterface;
-use App\Services\RequestServiceInterface;
-use App\DTO\AbstractDTO;
-use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 /**
  * Class RequestService
  * @package App\Services\HitBTC

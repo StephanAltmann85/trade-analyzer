@@ -33,7 +33,7 @@ class Test extends Command
     /**
      *
      */
-    protected function configure()
+    protected function configure() :void
     {
         $this
             ->setName('app:test')
@@ -46,6 +46,7 @@ class Test extends Command
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int|null|void
+     * @throws \Exception
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

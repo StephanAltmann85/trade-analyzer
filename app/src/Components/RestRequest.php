@@ -9,6 +9,7 @@
 namespace App\Components;
 
 use Unirest\Request;
+use Unirest\Response;
 
 class RestRequest extends Request
 {
@@ -20,14 +21,18 @@ class RestRequest extends Request
      * @param mixed $parameters parameters to send in the querystring
      * @param string $username Authentication username (deprecated)
      * @param string $password Authentication password (deprecated)
-     * @return Response
+     * @return \Unirest\Response
+     * @throws \Exception
      */
-    public static function get($url, $headers = array(), $parameters = null, $username = null, $password = null) {
+    public static function get($url, $headers = array(), $parameters = null, $username = null, $password = null) :Response {
         $response = parent::get($url, $headers, $parameters, $username, $password);
 
-        if($response->code != 200) {
-            throw new \Exception("Requested Service responded with status code $response->code");
+        if($response->code !== 200) {
+            throw new \RuntimeException("Requested Service responded with status code $response->code");
             //TODO: implement logger (url, time, status code) - monolog
+            //TODO: return code separately
+            //TODO: catch exception above
+            //TODO: custom exception class
         }
 
 

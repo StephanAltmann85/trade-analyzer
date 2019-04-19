@@ -19,11 +19,11 @@ class OrderBook implements TransformerInterface {
      * @param array $response
      * @return ArrayCollection
      */
-    public function transform(string $className, array $response) {
+    public function transform(string $className, array $response) :?ArrayCollection {
 
         $entities = new ArrayCollection();
 
-        foreach ($response["ask"] as &$element) {
+        foreach ($response['ask'] as $element) {
             // type is missing, add to value
             $element['type'] = 'ask';
 
@@ -31,7 +31,7 @@ class OrderBook implements TransformerInterface {
             $entities->add($entity);
         }
 
-        foreach ($response["bid"] as &$element) {
+        foreach ($response['bid'] as $element) {
             $element['type'] = 'bid';
 
             $entity = new $className($element, $this);
@@ -43,19 +43,21 @@ class OrderBook implements TransformerInterface {
 
     /**
      * @param array $element
+     * @param AbstractDTO $target
      */
     public function assign(array $element, AbstractDTO $target) : void {
+        /* @var \App\DTO\OrderBook $target */
         $target->exchange = 'HitBTC';
 
-        if($element["type"] == "ask") {
+        if($element['type'] === 'ask') {
             $target->type = 1;
         }
-        elseif ($element["type"] == "bid") {
+        elseif ($element['type'] === 'bid') {
             $target->type = 2;
         }
 
-        $target->price = $element["price"];
-        $target->quantity = $element["size"];
+        $target->price = $element['price'];
+        $target->quantity = $element['size'];
     }
 
 }

@@ -4,7 +4,6 @@ namespace App\Services\HitBTC;
 
 use App\DTO\OrderBook;
 use App\Services\BaseRequestService;
-use App\Services\RequestServiceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Services\TransformerInterface;
 
@@ -12,7 +11,7 @@ use App\Services\TransformerInterface;
  * Class RequestService
  * @package App\Services\HitBTC
  */
-class RequestService extends BaseRequestService implements RequestServiceInterface {
+class RequestService extends BaseRequestService {
 
     /**
      * @var TransformerInterface
@@ -22,7 +21,8 @@ class RequestService extends BaseRequestService implements RequestServiceInterfa
     /**
      * @param TransformerInterface $orderBookTransformer
      */
-    public function setOrderBookTransformer(TransformerInterface $orderBookTransformer) {
+    public function setOrderBookTransformer(TransformerInterface $orderBookTransformer): void
+    {
         $this->orderBookTransformer = $orderBookTransformer;
     }
 
@@ -37,8 +37,8 @@ class RequestService extends BaseRequestService implements RequestServiceInterfa
      * @return ArrayCollection
      * @throws \Exception
      */
-    public function getOrderBook(string $symbol) {
-
+    public function getOrderBook(string $symbol) : ?ArrayCollection
+    {
         $params = array(
             'endpoint' => 'orderbook',
             'symbol' => $symbol,
@@ -48,7 +48,7 @@ class RequestService extends BaseRequestService implements RequestServiceInterfa
         $response = $this->connectionService->get($params);
 
         if($response === NULL) {
-            throw new \Exception('Empty response');
+            throw new \RuntimeException('Empty response');
         }
 
         return $this->orderBookTransformer

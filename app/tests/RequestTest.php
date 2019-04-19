@@ -10,6 +10,8 @@ class RequestTest extends KernelTestCase
 
     private $requestService;
 
+    //TODO: replace by used service with replaced connection response
+
     public function __construct() {
         self::bootKernel();
 

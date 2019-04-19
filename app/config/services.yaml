@@ -54,6 +54,7 @@ services:
         arguments:
             $serviceBaseUrl: 'https://api.hitbtc.com/api/2/public/'
 
+
     App\Services\HitBTC\Transformer\OrderBook:
         public: false
 

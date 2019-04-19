@@ -3,7 +3,6 @@
 namespace App\Services\HitBTC;
 
 use App\Components\RestRequest;
-use App\Services\ConnectionServiceInterface;
 use Unirest;
 use App\Services\BaseConnectionService;
 
@@ -11,7 +10,8 @@ use App\Services\BaseConnectionService;
  * Class ConnectionService
  * @package App\Services\HitBTC
  */
-class ConnectionService extends BaseConnectionService implements ConnectionServiceInterface {
+class ConnectionService extends BaseConnectionService
+{
 
     /**
      * @param array $params
@@ -25,8 +25,6 @@ class ConnectionService extends BaseConnectionService implements ConnectionServi
         $headers = array('Accept' => 'application/json');
         Unirest\Request::jsonOpts(true);
 
-        $response = RestRequest::get($url, $headers, $query);
-
-        return $response->body;
+        return RestRequest::get($url, $headers, $query)->body;
     }
 }
